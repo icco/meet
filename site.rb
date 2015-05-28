@@ -63,6 +63,11 @@ end
   end
 end
 
+get "/logout" do
+  session = {}
+  redirect "/"
+end
+
 error 400..510 do
   @code = response.status
   erb :error
