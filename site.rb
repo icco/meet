@@ -39,15 +39,22 @@ configure do
 end
 
 get "/" do
-  erb :index
+  if session[:uid]
+    @hash = env['omniauth.auth'].info
+    erb :index
+  else
+    redirect "/auth/recurse_center"
+  end
 end
 
-# http://meetarc.herokuapp.com/auth/recurse_center/callback?code=e60ee81443d649c997770688f3df10ee45537d1a545fc867d7f006ef78b5f90d&state=6ef6ff1b13288739e04d8dc32ca02624c32d5bca13b0fd42
 %w(get post).each do |method|
   send(method, "/auth/:provider/callback") do
-    env['omniauth.auth'] # => OmniAuth::AuthHash
+    # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
+    session[:uid] = env['omniauth.auth'].uid
     session[:code] = params["code"]
     session[:state] = params["state"]
+
+    redirect "/"
   end
 end
 
