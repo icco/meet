@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hashtag Tracker</title>
+  </head>
+  <body>
+    <ul>
+      <% @tweets.each do |t| %>
+        <li><%= t.text %> - <a href="http://twitter.com/<%= t.screenname %>">@<%= t.screenname %></a> <a href="<%= t.link %>"><%= t.posted %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
