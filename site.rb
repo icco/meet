@@ -50,7 +50,8 @@ end
 %w(get post).each do |method|
   send(method, "/auth/:provider/callback") do
     # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
-    session[:uid] = env['omniauth.auth'].uid
+    p env['omniauth.auth']['extra']['raw_info']
+    session[:uid] = env['omniauth.auth']['uid']
     session[:code] = params["code"]
     session[:state] = params["state"]
 
