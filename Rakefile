@@ -3,8 +3,7 @@ require "bundler"
 Bundler.require(:default, ENV["RACK_ENV"] || :development)
 
 require "sinatra/activerecord/rake"
-
-require './lib/tweet'
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 namespace :db do
   task :load_config do
@@ -17,8 +16,7 @@ task :local do
   Kernel.exec("shotgun -s thin -p 9393")
 end
 
-desc "Scrape a hashtag"
+desc "Run Cron"
 task :cron => ["db:load_config"] do
-  count = Tweet.get_more "talkpay"
-  puts "There are now #{count} tweets."
+  raise "YOU HAVEN'T WRITTEN ME YET"
 end
