@@ -39,7 +39,7 @@ configure do
 end
 
 get "/" do
-  if session[:uid]
+  if session[:uid] and !env['omniauth.auth'].nil?
     @hash = env['omniauth.auth'].info
     erb :index
   else
