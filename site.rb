@@ -1,16 +1,16 @@
 require "rubygems"
 require "bundler"
 Bundler.require(:default, ENV["RACK_ENV"] || :development)
-
-require './lib/tweet'
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 configure do
   RACK_ENV = (ENV['RACK_ENV'] || :development).to_sym
   connections = {
-    :development => "postgres://localhost/hashtags",
-    :test => "postgres://postgres@localhost/hashtags_test",
+    :development => "postgres://localhost/meet",
+    :test => "postgres://postgres@localhost/meet_test",
     :production => ENV['DATABASE_URL']
   }
+
   url = URI(connections[RACK_ENV])
   options = {
     :adapter => url.scheme,
@@ -32,7 +32,6 @@ configure do
 end
 
 get "/" do
-  @tweets = Tweet.all
   erb :index
 end
 
