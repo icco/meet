@@ -29,6 +29,13 @@ configure do
     options[:adapter] = "postgresql"
   end
   set :database, options
+
+  enable :sessions
+  set :session_secret, ENV['SESSION_SECRET'] || '*&(^B234'
+
+  use OmniAuth::Builder do
+    provider :recurse_center, ENV['RC_ID'], ENV['RC_SECRET']
+  end
 end
 
 get "/" do
