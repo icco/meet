@@ -83,7 +83,7 @@ end
 end
 
 get "/logout" do
-  session = {}
+  session[:uid] = nil
   redirect "/"
 end
 
