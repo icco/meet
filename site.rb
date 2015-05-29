@@ -78,9 +78,9 @@ end
     session[:state] = params["state"]
 
     u = User.find_or_create_by(id: session[:uid])
-    u.name = env['omniauth.auth']['name']
-    u.image = env['omniauth.auth']['image']
-    u.email = env['omniauth.auth']['email']
+    u.name = env['omniauth.auth']['info']['name']
+    u.image = env['omniauth.auth']['info']['image']
+    u.email = env['omniauth.auth']['info']['email']
     u.save
 
     redirect "/"
