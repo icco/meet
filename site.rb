@@ -32,7 +32,7 @@ configure do
 
   use Rack::Session::Cookie, :key => 'rack.session',
     :path => '/',
-    :expire_after => 86400 # 1 day
+    :expire_after => 86400, # 1 day
     :secret => ENV['SESSION_SECRET'] || '*&(^B234'
 
   use OmniAuth::Builder do
