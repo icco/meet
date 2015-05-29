@@ -4,6 +4,14 @@
     <link rel="stylesheet" href="/css/tachyons.min.css">
   </head>
   <body>
-    Welcome <%= @hash[:name] %>!
+    <h1>Meet A Recurser!</h1>
+
+    <p>
+    Welcome <%= @user.name %>!
+    </p>
+
+    <img src="<%= @user.image %>">
+
+    <p>Your ID is <%= @user.id %>. Your email is <%= @user.email %>.</p>
   </body>
 </html>

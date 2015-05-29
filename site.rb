@@ -40,9 +40,7 @@ end
 
 get "/" do
   if session[:uid]
-    @hash = {
-      name: session[:uid]
-    }
+    @user = User.find(id: session[:uid])
     erb :index
   else
     redirect "/auth/recurse_center"
