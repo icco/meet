@@ -42,7 +42,7 @@ get "/" do
   if session[:uid]
     @user = User.where(id: session[:uid]).first
 
-    if @user.nil
+    if @user.nil?
       error 500
     else
       erb :index
