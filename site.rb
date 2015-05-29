@@ -40,8 +40,13 @@ end
 
 get "/" do
   if session[:uid]
-    @user = User.find(session[:uid])
-    erb :index
+    @user = User.where(id: session[:uid]).first
+
+    if @user.nil
+      error 500
+    else
+      erb :index
+    end
   else
     redirect "/auth/recurse_center"
   end
@@ -72,7 +77,7 @@ end
     session[:code] = params["code"]
     session[:state] = params["state"]
 
-    u = User.find_or_create(id: session[:uid])
+    u = User.find_or_create_by(id: session[:uid])
     u.name = env['omniauth.auth']['name']
     u.image = env['omniauth.auth']['image']
     u.email = env['omniauth.auth']['email']
