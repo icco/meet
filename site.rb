@@ -43,6 +43,7 @@ end
 get "/" do
   if session[:uid]
     @user = User.where(id: session[:uid]).first
+    @batches = access_token_get(session[:token], "https://recurse.com/api/v1/batches")
 
     if @user.nil?
       error 500
@@ -76,8 +77,7 @@ end
     # twitter="icco">
 
     session[:uid] = env['omniauth.auth']['uid']
-    session[:code] = params["code"]
-    session[:state] = params["state"]
+    session[:token] = env['omniauth.auth']['credentials']['token']
 
     u = User.find_or_create_by(id: session[:uid])
     u.name = env['omniauth.auth']['info']['name']
@@ -97,4 +97,8 @@ end
 error 400..510 do
   @code = response.status
   erb :error
+end
+
+def access_token_get token, target
+
 end

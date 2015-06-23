@@ -41,6 +41,14 @@ module OmniAuth
       def raw_info
         @raw_info ||= access_token.get("/api/v1/people/me").parsed
       end
+
+      def users
+        []
+      end
+
+      def batches
+        access_token.get("/api/v1/batches").parsed
+      end
     end
   end
 end
