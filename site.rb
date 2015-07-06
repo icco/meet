@@ -72,7 +72,10 @@ end
     # is_hacker_schooler=true
     # job=nil
     # last_name="Welch"
-    # links=[#<OmniAuth::AuthHash title="natwelch.com" url="http://natwelch.com">] middle_name=nil phone_number="+17077998675" projects=[#<OmniAuth::AuthHash description="My blog for interesting links and daily posts about RC. Hand coded in go. https://github.com/icco/natnatnat" title="Nat? Nat. Nat!" url="https://writing.natwelch.com/">, #<OmniAuth::AuthHash description="Hyperspace is a multiplayer version of Asteroids. https://github.com/kenpratt/hyperspace" title="Hyperspace" url="http://playhyperspace.com/">, #<OmniAuth::AuthHash description="A p2p audio streaming app built entirely in javascript for hosting silent dance parties. https://github.com/pselle/shhparty" title="ShhParty" url="http://shhparty.herokuapp.com/">, #<OmniAuth::AuthHash description="A ruby site for tracking how much I work on personal projects. https://github.com/icco/code.natwelch.com" title="Nat's Code" url="http://code.natwelch.com/">]
+    # links=[#<OmniAuth::AuthHash title="natwelch.com" url="http://natwelch.com">]
+    # middle_name=nil
+    # phone_number="+17077998675"
+    # projects=[#<OmniAuth::AuthHash description="My blog for interesting links and daily posts about RC. Hand coded in go. https://github.com/icco/natnatnat" title="Nat? Nat. Nat!" url="https://writing.natwelch.com/">, #<OmniAuth::AuthHash description="Hyperspace is a multiplayer version of Asteroids. https://github.com/kenpratt/hyperspace" title="Hyperspace" url="http://playhyperspace.com/">, #<OmniAuth::AuthHash description="A p2p audio streaming app built entirely in javascript for hosting silent dance parties. https://github.com/pselle/shhparty" title="ShhParty" url="http://shhparty.herokuapp.com/">, #<OmniAuth::AuthHash description="A ruby site for tracking how much I work on personal projects. https://github.com/icco/code.natwelch.com" title="Nat's Code" url="http://code.natwelch.com/">]
     # skills=["java", "ruby", "Linux", "git", "php", "golang", "distributed systems", "google cloud", "python"]
     # twitter="icco">
 
