@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.2.0"
+ruby "2.2.3"
 
 # Project requirements
 gem "activerecord", :require => "active_record"
@@ -11,7 +11,6 @@ gem "omniauth-oauth2" # https://github.com/intridea/omniauth-oauth2
 gem "pg"
 gem "rack-protection", :require => "rack/protection"
 gem "rake"
-gem "sass"
 gem "sinatra"
 gem "sinatra-activerecord", :require => "sinatra/activerecord"
 gem "thin"
