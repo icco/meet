@@ -11,6 +11,7 @@ configure do
     :production => ENV['DATABASE_URL']
   }
 
+  p RACK_ENV
   if !RACK_ENV.eql? :development
     # Force HTTPS
     use Rack::SslEnforcer
@@ -78,6 +79,12 @@ end
 
 get "/" do
   erb :index
+end
+
+post "/" do
+  @current_user.frequency = params['frequency']
+  @current_user.save
+  redirect "/"
 end
 
 get "/logout" do
