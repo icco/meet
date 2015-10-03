@@ -64,15 +64,20 @@ end
     session[:uid] = env["omniauth.auth"]["uid"]
     session[:token] = env["omniauth.auth"]["credentials"]["token"]
 
-
     u = User.find_or_create_by(id: session[:uid])
     u.name = env["omniauth.auth"]["info"]["name"]
     u.image = env["omniauth.auth"]["info"]["image"]
-    u.batch = env["omniauth.auth"]["info"]["batch"]["name"]
+    u.email = env["omniauth.auth"]["info"]["email"]
+    u.frequency = 0
+    u.available = false
     u.save
 
     redirect "/"
   end
+end
+
+get "/" do
+  erb :index
 end
 
 get "/logout" do
