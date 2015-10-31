@@ -22,7 +22,22 @@
       </select>
       <input type="submit">
     </form>
-
     <p>Your ID is <%= @current_user.id %>. Your email is <%= @current_user.email %>.</p>
+    <h2>Previous Matches</h2>
+    <% @matches.each do |match| %>
+       <div class="other-user">
+         <img src="<%= match[:other_user].image %>">
+         <%= match[:other_user].name %>
+       </div>
+       <div class="match-time">
+         <%= match[:time] %>
+       </div>
+       <% if !match[:met] %>
+           <form action="/update-match" method="post">
+             <input name="match_id" type="hidden" value="<%= match[:match_id] %>">
+             <input type="submit" value="We've Met!">
+           </form>
+       <% end %>
+    <% end %>
   </body>
 </html>

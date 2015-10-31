@@ -78,12 +78,32 @@ end
 end
 
 get "/" do
+  @matches = []
+  @current_user.matches.each do|match|
+    @matches.append({
+                      match_id: match.id,
+                      time: match.created_at,
+                      met: match.met,
+                      other_user: match.a == @current_user ? match.b : match.a
+                    })
+  end
   erb :index
 end
 
 post "/" do
   @current_user.frequency = params['frequency']
   @current_user.save
+  redirect "/"
+end
+
+post "/update-match" do
+  match = Match.find(params["match_id"])
+  if @current_user == match.a or @current_user == match.b
+    match.met = true
+    match.save
+  else
+    halt 403
+  end
   redirect "/"
 end
 
