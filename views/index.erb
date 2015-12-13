@@ -25,9 +25,12 @@
     <p>Your ID is <%= @current_user.id %>. Your email is <%= @current_user.email %>.</p>
     <h2>Previous Matches</h2>
     <% @matches.each do |match| %>
+      <div class="match mas wi-100">
        <div class="other-user">
-         <img src="<%= match[:other_user].image %>">
-         <%= match[:other_user].name %>
+         <img src="<%= match[:other_user].image %>" class="w3">
+         <div class="name">
+           <%= match[:other_user].name %>
+         </div>
        </div>
        <div class="match-time">
          <%= match[:time] %>
@@ -38,6 +41,7 @@
              <input type="submit" value="We've Met!">
            </form>
        <% end %>
+     </div>
     <% end %>
   </body>
 </html>
