@@ -47,7 +47,7 @@ task :update_availability => ["db:load_config"] do
   User.where(frequency: 0).update_all(available: false)
   User.where("frequency > 0").each do |u|
     last_match = Match.where("a_id = ? or b_id = ?", u.id, u.id).order(created_at: :desc).first
-    u.available = (Time.now - last_match.created_at) > (u.frequency * 60 * 60 * 24)
+    u.available = last_match.nil? || (last_match && (Time.now - last_match.created_at) > (u.frequency * 60 * 60 * 24))
     u.save
   end
   puts "After update: #{User.where(available: true).count} available."
