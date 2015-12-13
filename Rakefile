@@ -33,6 +33,8 @@ task :match_people => ["db:load_config"] do
                   b: users[i+1],
                   met: false)
     m.save
+    m.email!
+
     match_count += 1
   end
 
