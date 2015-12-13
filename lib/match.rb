@@ -27,8 +27,7 @@ class Match < ActiveRecord::Base
       :text => email_body,
     )
 
-    p to_addr
-    p res
+    # TODO: Store or log response in a meaningful way
     p res.body
   end
 
