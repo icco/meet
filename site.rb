@@ -36,6 +36,15 @@ configure do
   end
   set :database, options
 
+  SMTP_OPTIONS = {
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+    :domain         => "meetrc.herokuapp.com" # the HELO domain provided by the client to the server
+  }
+
   use Rack::Session::Cookie, :key => 'rack.session',
     :path => '/',
     :expire_after => 86400, # 1 day
