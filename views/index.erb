@@ -17,6 +17,7 @@
         <option value="0" <% if @current_user.frequency == 0 %>selected<% end %> >Never</option>
         <option value="1" <% if @current_user.frequency == 1 %>selected<% end %>>Every Day</option>
         <option value="7" <% if @current_user.frequency == 7 %>selected<% end %>>Every Week</option>
+        <option value="14" <% if @current_user.frequency == 14 %>selected<% end %>>Every Other Week</option>
         <option value="30" <% if @current_user.frequency == 30 %>selected<% end %>>Every Month</option>
         <option value="90" <% if @current_user.frequency == 90 %>selected<% end %>>Every Quarter</option>
       </select>
