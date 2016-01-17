@@ -8,6 +8,10 @@ class Match < ActiveRecord::Base
   belongs_to :b, :class_name => "User", :foreign_key => :b_id
 
   def email!
+    if RACK_ENV.eql? :development
+      return
+    end
+
     if !API_KEY
       raise "API_KEY is not set in ENV."
     end
