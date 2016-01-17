@@ -42,7 +42,7 @@ configure do
     :secret => ENV['SESSION_SECRET'] || '*&(^B234'
 
   use OmniAuth::Builder do
-    provider :recurse_center, ENV['RC_ID'], ENV['RC_SECRET']
+    provider :recurse_center, ENV['RC_ID'], ENV['RC_SECRET'], {:provider_ignores_state => true}
   end
 end
 
