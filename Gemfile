@@ -1,13 +1,13 @@
 source "https://rubygems.org"
 
-ruby "2.2.3"
+ruby "2.3.0"
 
 # Project requirements
 gem "activerecord", :require => "active_record"
 gem "bundler"
 gem "erubis", "~> 2.7.0"
 gem "oj"
-gem "omniauth-oauth2" # https://github.com/intridea/omniauth-oauth2
+gem "omniauth-oauth2", '~> 1.3.1' # https://github.com/intridea/omniauth-oauth2
 gem "pg"
 gem "rack-protection", :require => "rack/protection"
 gem "rack-ssl-enforcer"
