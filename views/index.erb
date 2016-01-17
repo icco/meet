@@ -2,17 +2,46 @@
   <head>
     <title>Meet a Recurser</title>
     <link rel="stylesheet" href="/css/tachyons.min.css">
+    <style>
+      .button {
+        background-color: #61ae24;
+        border-color: #4e8b1d;
+        border-radius: 0;
+        border-style: solid;
+        border-width: 0;
+        color: #FFF;
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 300ms ease-out;
+      }
+    </style>
   </head>
-  <body class="mam">
+  <body class="mam mw7">
     <h1>Meet a Recurser!</h1>
 
     <p>
     Welcome <%= @current_user.name %>!
     </p>
 
-    <img src="<%= @current_user.image %>">
+    <p>
+    Meet a Recurser is a website that matches you with a different recurser on a recurring frequency. It sends an introduction email to the two recursers to let them meet up or chat at their desired pace. Some times the recurser will be someone you have not met with, some times it will be someone you have met before.
+    </p>
+
+    <p>
+    Meet a Recurser is an opt-in only experience, if you would like to join our ranks, please change the <strong>Frequency</strong> dropdown below from "Never" to your preferred period.
+    <p>
+
+    <p>
+    There are currently <%= User.where('frequency > 0').count %> Recursers available to match with.
+    </p>
 
     <form method="post">
+      <label for="frequency">Frequency of Matches</label>
       <select name="frequency" class="frequency">
         <option value="0" <% if @current_user.frequency == 0 %>selected<% end %> >Never</option>
         <option value="1" <% if @current_user.frequency == 1 %>selected<% end %>>Every Day</option>
@@ -21,10 +50,12 @@
         <option value="30" <% if @current_user.frequency == 30 %>selected<% end %>>Every Month</option>
         <option value="90" <% if @current_user.frequency == 90 %>selected<% end %>>Every Quarter</option>
       </select>
-      <input type="submit">
+
+      <input type="submit" value="Update!" class="button">
     </form>
-    <p>Your ID is <%= @current_user.id %>. Your email is <%= @current_user.email %>.</p>
+
     <h2>Previous Matches</h2>
+
     <% @matches.each do |match| %>
       <div class="match mas wi-100">
        <div class="other-user">
@@ -33,13 +64,15 @@
            <%= match[:other_user].name %>
          </div>
        </div>
+
        <div class="match-time">
          <%= match[:time] %>
        </div>
+
        <% if !match[:met] %>
            <form action="/update-match" method="post">
              <input name="match_id" type="hidden" value="<%= match[:match_id] %>">
-             <input type="submit" value="We've Met!">
+             <input type="submit" value="We've Met!" class="button">
            </form>
        <% end %>
      </div>
