@@ -69,8 +69,8 @@ end
     u.name = env["omniauth.auth"]["info"]["name"]
     u.image = env["omniauth.auth"]["info"]["image"]
     u.email = env["omniauth.auth"]["info"]["email"]
-    u.frequency = 0
-    u.available = false
+    u.frequency ||= 0
+    u.available ||= false
     u.save
 
     redirect "/"
